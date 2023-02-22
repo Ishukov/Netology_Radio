@@ -1,13 +1,39 @@
 package Radio;
 
 public class Radio {
-    public int currentRadioStationNumber;
+    private int currentRadioStationNumber;
+    private int currentVolume;
 
+    protected void nextRadioStation() {
+        int target = currentRadioStationNumber + 1;
+        if (target > 9) {
+            target = 0;
+        }
+        setCurrentRadioStationNumber(target);
+    }
+
+    protected void previousRadioStation() {
+        int target = currentRadioStationNumber - 1;
+        if (target < 0) {
+            target = 9;
+        }
+        setCurrentRadioStationNumber(target);
+    }
+    protected void increaseVolume() {
+        if (currentVolume < 10) {
+            currentVolume = currentVolume + 1;
+        }
+    }
+    protected void reduceVolume() {
+        if (currentVolume > 0) {
+            currentVolume = currentVolume - 1;
+        }
+    }
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
 
-    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
+    protected void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
         if (newCurrentRadioStationNumber < 0) {
             return;
         }
@@ -17,27 +43,10 @@ public class Radio {
         currentRadioStationNumber = newCurrentRadioStationNumber;
     }
 
-    public void nextRadioStation() {
-        int target = currentRadioStationNumber + 1;
-        if (target > 9) {
-            target = 0;
-        }
-        setCurrentRadioStationNumber(target);
-    }
-
-    public void previousRadioStation() {
-        int target = currentRadioStationNumber - 1;
-        if (target < 0) {
-            target = 9;
-        }
-        setCurrentRadioStationNumber(target);
-    }
-
-    public int currentVolume;
-    public int getCurrentVolume(){
+    public int getCurrentVolume() {
         return currentVolume;
     }
-    public void setCurrentVolume(int newCurrentVolume) {
+     protected void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume < 0) {
             return;
         }
@@ -45,16 +54,5 @@ public class Radio {
             return;
         }
         currentVolume = newCurrentVolume;
-    }
-
-    public void increaseVolume() {
-        if (currentVolume < 10) {
-            currentVolume = currentVolume + 1;
-        }
-    }
-    public void reduceVolume() {
-        if (currentVolume > 0) {
-            currentVolume = currentVolume - 1;
-        }
     }
 }

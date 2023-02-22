@@ -1,3 +1,5 @@
+package Radio;
+
 import Radio.Radio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
