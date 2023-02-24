@@ -1,6 +1,5 @@
 package Radio;
 
-import Radio.Radio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -63,8 +62,9 @@ public class RadioTest {
 
         int actual = volume.getCurrentVolume();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
+
     @ParameterizedTest
     @CsvFileSource(resources = "/VolumeTestDate/reduceVolumeDate.csv")
     public void reduceVolumeTest(int setVolume, int expected) {
@@ -74,6 +74,6 @@ public class RadioTest {
 
         int actual = volume.getCurrentVolume();
 
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
 }

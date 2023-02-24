@@ -19,16 +19,19 @@ public class Radio {
         }
         setCurrentRadioStationNumber(target);
     }
+
     protected void increaseVolume() {
         if (currentVolume < 10) {
             currentVolume = currentVolume + 1;
         }
     }
+
     protected void reduceVolume() {
         if (currentVolume > 0) {
             currentVolume = currentVolume - 1;
         }
     }
+
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
     }
@@ -46,7 +49,8 @@ public class Radio {
     public int getCurrentVolume() {
         return currentVolume;
     }
-     protected void setCurrentVolume(int newCurrentVolume) {
+
+    protected void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume < 0) {
             return;
         }
