@@ -51,10 +51,6 @@ public class Radio {
         return currentRadioStationNumber;
     }
 
-    public int getMaxRadioStation() {
-        return maxRadioStation;
-    }
-
     protected void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
         if (newCurrentRadioStationNumber < minRadioStation) {
             return;
@@ -63,6 +59,10 @@ public class Radio {
             return;
         }
         currentRadioStationNumber = newCurrentRadioStationNumber;
+    }
+
+    public int getMaxRadioStation() {
+        return maxRadioStation;
     }
 
     public int getCurrentVolume() {
