@@ -1,6 +1,13 @@
 package Radio;
 
-public class Radio {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Radio {
     private int maxRadioStation = 9;
     private int minRadioStation = 0;
     private int currentRadioStationNumber = 0;
@@ -8,15 +15,12 @@ public class Radio {
     private int minVolume = 0;
     private int currentVolume = 10;
 
+
     public Radio(int amountRadioStation) {
         maxRadioStation = amountRadioStation - 1;
         if (maxRadioStation < 0) {
             maxRadioStation = 0;
         }
-    }
-
-    public Radio() {
-
     }
 
     protected void nextRadioStation() {
@@ -51,7 +55,7 @@ public class Radio {
         return currentRadioStationNumber;
     }
 
-    protected void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
+    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
         if (newCurrentRadioStationNumber < minRadioStation) {
             return;
         }
@@ -69,7 +73,7 @@ public class Radio {
         return currentVolume;
     }
 
-    protected void setCurrentVolume(int newCurrentVolume) {
+    public void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume < minVolume) {
             return;
         }
@@ -78,4 +82,5 @@ public class Radio {
         }
         currentVolume = newCurrentVolume;
     }
+
 }
