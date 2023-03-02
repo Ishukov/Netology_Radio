@@ -1,62 +1,73 @@
 package Radio;
 
-public class Radio {
-    private int currentRadioStationNumber;
-    private int currentVolume;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+class Radio {
+    private int maxRadioStation = 9;
+    private int minRadioStation = 0;
+    private int currentRadioStationNumber = 0;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentVolume = 10;
+
+    public Radio(int amountRadioStation) {
+        maxRadioStation = amountRadioStation - 1;
+        if (maxRadioStation < 0) {
+            maxRadioStation = 0;
+        }
+    }
 
     protected void nextRadioStation() {
         int target = currentRadioStationNumber + 1;
-        if (target > 9) {
-            target = 0;
+        if (target > maxRadioStation) {
+            target = minRadioStation;
         }
         setCurrentRadioStationNumber(target);
     }
 
     protected void previousRadioStation() {
         int target = currentRadioStationNumber - 1;
-        if (target < 0) {
-            target = 9;
+        if (target < minRadioStation) {
+            target = maxRadioStation;
         }
         setCurrentRadioStationNumber(target);
     }
 
     protected void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         }
     }
 
     protected void reduceVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         }
     }
 
-    public int getCurrentRadioStationNumber() {
-        return currentRadioStationNumber;
-    }
-
-    protected void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
-        if (newCurrentRadioStationNumber < 0) {
+    public void setCurrentRadioStationNumber(int newCurrentRadioStationNumber) {
+        if (newCurrentRadioStationNumber < minRadioStation) {
             return;
         }
-        if (newCurrentRadioStationNumber > 9) {
+        if (newCurrentRadioStationNumber > maxRadioStation) {
             return;
         }
         currentRadioStationNumber = newCurrentRadioStationNumber;
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    protected void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
+
 }

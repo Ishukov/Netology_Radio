@@ -5,10 +5,23 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 public class RadioTest {
+    Radio radio = new Radio();
+
+    Radio volume = new Radio();
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/RadioStationDate/amountRadioDate.csv")
+    public void shouldAmountRadioStation(int amountRadioStation, int expected) {
+        Radio radio = new Radio(amountRadioStation);
+
+        int actual = radio.getMaxRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     @ParameterizedTest
     @CsvFileSource(resources = "/RadioStationDate/setRadioDate.csv")
-    public void setRadioStation(int radioStation, int expected) {
-        Radio radio = new Radio();
+    public void shouldSetRadioStation(int radioStation, int expected) {
         radio.setCurrentRadioStationNumber(radioStation);
 
         int actual = radio.getCurrentRadioStationNumber();
@@ -18,8 +31,7 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/RadioStationDate/nextRadioStationDate.csv")
-    public void nextRadioStation(int radioStation, int expected) {
-        Radio radio = new Radio();
+    public void shouldNextRadioStation(int radioStation, int expected) {
         radio.setCurrentRadioStationNumber(radioStation);
 
         radio.nextRadioStation();
@@ -31,8 +43,7 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/RadioStationDate/previousRadioStationDate.csv")
-    public void previousRadioStation(int radioStation, int expected) {
-        Radio radio = new Radio();
+    public void shouldPreviousRadioStation(int radioStation, int expected) {
         radio.setCurrentRadioStationNumber(radioStation);
 
         radio.previousRadioStation();
@@ -44,8 +55,7 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/VolumeTestDate/setVolumeDate.csv")
-    public void setVolumeTest(int setVolume, int expected) {
-        Radio volume = new Radio();
+    public void shouldSetVolumeTest(int setVolume, int expected) {
         volume.setCurrentVolume(setVolume);
 
         int actual = volume.getCurrentVolume();
@@ -55,8 +65,7 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/VolumeTestDate/increaseVolumeDate.csv")
-    public void increaseVolumeTest(int setVolume, int expected) {
-        Radio volume = new Radio();
+    public void shouldIncreaseVolumeTest(int setVolume, int expected) {
         volume.setCurrentVolume(setVolume);
         volume.increaseVolume();
 
@@ -67,8 +76,7 @@ public class RadioTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/VolumeTestDate/reduceVolumeDate.csv")
-    public void reduceVolumeTest(int setVolume, int expected) {
-        Radio volume = new Radio();
+    public void shouldReduceVolumeTest(int setVolume, int expected) {
         volume.setCurrentVolume(setVolume);
         volume.reduceVolume();
 
